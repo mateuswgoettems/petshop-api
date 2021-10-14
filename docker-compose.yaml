@@ -1,0 +1,39 @@
+version: "3.5"
+services:
+  mysql:
+    container_name: mysql
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: IrishCoffe@21
+      MYSQL_DATABASE: petshop
+
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./database:/var/lib/mysql
+
+  phpmyadmin:
+    container_name: phpmyadmin
+    depends_on:
+      - mysql
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - 8088:80
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+  api:
+    container_name: api
+    restart: always
+    image: node:14.17-alpine
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/home/node/app
+    command: sh -c "cd /home/node/app && npm install && npm start"
+
+volumes:
+  database:
