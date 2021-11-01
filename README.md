@@ -3,4 +3,4 @@
 ## Description 🚀
 <p aling="center"></p>
 
-![Badge](https://ihttps://img.shields.io/github/issues/mateuswgoettems/petshop-api)
+![Badge](https://https://img.shields.io/github/issues/mateuswgoettems/petshop-api)
